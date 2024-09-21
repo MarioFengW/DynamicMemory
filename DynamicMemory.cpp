@@ -1,0 +1,47 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    
+    int capacity = 5;
+    int * number = new int[5];
+    int entries = 0;
+
+    while(true) {
+        cout << "numbers: " << endl;
+
+        cin >> number[entries];
+        
+        if(cin.fail()) break;
+        entries++;
+        
+        if(entries == 5) {
+
+            capacity *= 2;
+            int* temp = new int[capacity];
+
+            // copiar los elementos de temp al arreglo de number
+
+            for(int i = 0; i < entries; i++) {
+                temp[i] = number[i];
+            }
+
+            delete[] number;
+            number = temp;
+
+        }
+
+        if(entries > 5) {
+            cout << "Warning: Exceded capacity! " << endl;
+        }
+        
+
+        
+    }
+        for(int i = 0; i < entries; i++) {
+            cout << number[i] << " ";
+        }
+
+    return 0;
+}
